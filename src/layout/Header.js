@@ -9,7 +9,7 @@ import {Collapse,
 
 import {Link} from "react-router-dom"
 import {UserContext} from "../context/UserContext"
-
+import firebase from "firebase/app"
 const Header = ()=>{
     const context = useContext(UserContext);
     const [isOpen,setIsOpen] = useState(false)
@@ -27,7 +27,7 @@ const Header = ()=>{
         <Nav className="ml-auto" navbar>
             {context.user ? (
                   <NavItem>
-                <NavLink tag={Link} to="/" className="text-white">
+                <NavLink tag={Link} to="/" className="text-white" onClick={()=>{context.setUser(null)}}>
                     logout
                 </NavLink>
             </NavItem>) : (
